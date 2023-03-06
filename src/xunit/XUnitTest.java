@@ -2,12 +2,9 @@ package xunit;
 
 public class XUnitTest {
 	public static void main(String[] args) {
-		TestResult result = new TestResult();
-		new TestCaseTest("testTemplateMethod").run(result);
-		new TestCaseTest("testResult").run(result);
-		new TestCaseTest("testFailedResultFormatting").run(result);
-		new TestCaseTest("testFailedResult").run(result);
-		new TestCaseTest("testSuite").run(result);
+		TestSuite suite = TestCaseTest.suite();
+		TestResult result = new TestResult(); // 결과 수집
+		suite.run(result);
 		System.out.println(result.getSummary());
 	}
 }
