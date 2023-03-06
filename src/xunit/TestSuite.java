@@ -5,12 +5,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.core.annotation.AnnotationUtils;
+
 public class TestSuite implements Test {
 	List<Test> tests = new ArrayList<>();
 
 	public TestSuite(Class<? extends TestCase> testClass) {
 		Arrays.stream(testClass.getMethods())
-			.filter(m -> m.getName().startsWith("test"))
+			.filter(m -> AnnotationUtils.findAnnotation(m, xunit.annotation.Test.class) != null)
 			.forEach(m ->
 				{
 					try {

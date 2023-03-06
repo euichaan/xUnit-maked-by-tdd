@@ -1,20 +1,17 @@
 package xunit;
 
+import xunit.annotation.Test;
+
 public class TestCaseTest extends TestCase {
 	public TestCaseTest(String name) {
 		super(name);
 	}
 
 	public static TestSuite suite() {
-		// suite.add(new TestCaseTest("testTemplateMethod"));
-		// suite.add(new TestCaseTest("testResult"));
-		// suite.add(new TestCaseTest("testFailedResultFormatting"));
-		// suite.add(new TestCaseTest("testFailedResult"));
-		// suite.add(new TestCaseTest("testSuite"));
-
 		return new TestSuite(TestCaseTest.class);
 	}
 
+	@Test
 	public void testTemplateMethod() {
 		WasRun wasRun = new WasRun("testMethod");
 		TestResult result = new TestResult();
@@ -22,6 +19,7 @@ public class TestCaseTest extends TestCase {
 		Assert.assertEquals("setUp testMethod tearDown", wasRun.log);
 	}
 
+	@Test
 	public void testResult() {
 		WasRun wasRun = new WasRun("testMethod");
 		TestResult result = new TestResult();
@@ -29,6 +27,7 @@ public class TestCaseTest extends TestCase {
 		Assert.assertEquals("1 run, 0 failed", result.getSummary());
 	}
 
+	@Test
 	public void testFailedResultFormatting() {
 		// 테스트가 실패했을 때
 		TestResult result = new TestResult();
@@ -37,6 +36,7 @@ public class TestCaseTest extends TestCase {
 		Assert.assertEquals("1 run, 1 failed", result.getSummary());
 	}
 
+	@Test
 	public void testFailedResult() {
 		// 실패하는 테스트로 Result를 받아오는 지 확인
 		WasRun wasRun = new WasRun("testBrokenMethod");
@@ -45,6 +45,7 @@ public class TestCaseTest extends TestCase {
 		Assert.assertEquals("1 run, 1 failed", result.getSummary());
 	}
 
+	@Test
 	public void testSuite() {
 		TestSuite suite = new TestSuite();
 		suite.add(new WasRun("testMethod"));
