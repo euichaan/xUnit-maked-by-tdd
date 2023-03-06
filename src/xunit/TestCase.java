@@ -19,7 +19,8 @@ public class TestCase {
 			Method method = getClass().getMethod(name);
 			method.invoke(this); // 어느 오브젝트의 메소드인지
 		} catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-			throw new RuntimeException(e);
+			// throw new RuntimeException(e);
+			result.testFailed();
 		}
 
 		tearDown();
