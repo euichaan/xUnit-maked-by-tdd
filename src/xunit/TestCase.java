@@ -19,8 +19,13 @@ public class TestCase {
 		} catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
 			throw new RuntimeException(e);
 		}
+
+		tearDown();
 	}
 
 	public void setUp() {
+	}
+
+	public void tearDown() {
 	}
 }
